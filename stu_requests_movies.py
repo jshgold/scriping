@@ -18,9 +18,9 @@ soup=BeautifulSoup(res.text,"lxml")
 movies = soup.find_all("div",attrs={"class":"Vpfmgd"})
 print(len(movies))
 
-#with open("movie.html","w",encoding="utf8") as f:
-#    f.write(soup.prettify())
+with open("movie.html","w",encoding="utf8") as f:
+    f.write(soup.prettify())
 
-for movie in movies:
-    title = movie.find("div",attrs={"class":"WsMG1c nnK0zc"}).get_text()
-    print(title)
+#for movie in movies:
+#    title = movie.find("div",attrs={"class":"WsMG1c nnK0zc"}).get_text()
+#    print(title)
