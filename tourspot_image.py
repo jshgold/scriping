@@ -1,5 +1,5 @@
+#from selenium import webdriver
 from bs4 import BeautifulSoup
-from selenium import webdriver
 import requests
 import re
 import time
@@ -61,8 +61,9 @@ for ye in range(2010,2022):
     for mo in range(1,13):
         counts=0
         mo=str(mo)
-        if re.match(r'[0-9]',mo):
+        if len(mo)==1:
             mo='0'+mo
+            print(mo)
         url ="https://www.mcst.go.kr/kor/s_culture/tour/tourList.jsp?pSeq=&pDetailSeq=&pMenuCd=0530000000&pCurrentPage=1&pOrder=&pRegYear={year}&pRegMonth={month}&pSido=&pSearchType=TITLE&pSearchWord=".format(year=ye,month=mo)
         time.sleep(2)
         res = requests.get(url)
@@ -102,7 +103,7 @@ for ye in range(2010,2022):
                     image_res = requests.get(image_url)
                     image_res.raise_for_status()
 
-                    with open("{}{}.jpg".format(mo,tourlist_name),"wb") as f:
+                    with open("tourspots/{}_{}_{}.jpg".format(ye,mo,tourlist_name),"wb") as f:
                         f.write(image_res.content)
 
         
