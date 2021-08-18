@@ -5,9 +5,18 @@ import pymysql
 import time
 import re
 
-
-con = pymysql.connect(host="127.0.0.1",user="root",password="1234",db="example",charset="utf8")
+lst=[]
+con = pymysql.connect(host="127.0.0.1",user="root",password="1234",db="site",charset="utf8")
 cur=con.cursor()
+sql = "SELECT spot FROM datas"
+cur.execute(sql)
+while(True):
+    row=cur.fetchone()
+    if row==None:
+        break
+    lst.append(row[0])
+    
+
 for year in range(2010,2022):
     for month in range(1,13):
         month=str(month)
@@ -32,12 +41,14 @@ for year in range(2010,2022):
                 options = webdriver.ChromeOptions()
                 options.headless=True
                 options.add_argument("window-size=1920x1080")
-                options.add_argument("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36")
+                options.add_argument("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36")
                 browser = webdriver.Chrome(options=options)
                 browser.get(url)
                 browser.find_elements_by_class_name("go")[count].click()
                 time.sleep(1)
                 title=browser.find_element_by_class_name("view_title").text.strip()
+                if title in lst:
+                    continue
                 dep = browser.find_element_by_class_name("full").text.strip()
                 content = browser.find_element_by_class_name("view_con").text.strip()
                 if content.find("※") != -1:
@@ -48,8 +59,12 @@ for year in range(2010,2022):
                     print(wich)
                 content = content[:wich]
                 tourimg = browser.find_element_by_css_selector("#content > div.contentWrap > div.viewWarp > div.culture_view_img > img").get_attribute("src")
-                sql = "INSERT INTO image (spot,content,tourimg,dep)"\
+
+                
+
+                sql = "INSERT INTO datas (spot,cont,tourimg,dep)"\
                     "values(%s,%s,%s,%s)"
+                
                 cur.execute(sql,(title,content,tourimg,dep))
                 con.commit()
             
