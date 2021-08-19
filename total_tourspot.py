@@ -19,6 +19,7 @@ while(True):
 
 for year in range(2010,2022):
     for month in range(1,13):
+        mont=month
         month=str(month)
         if len(month)==1:
             month="0"+month
@@ -62,10 +63,10 @@ for year in range(2010,2022):
 
                 
 
-                sql = "INSERT INTO datas (spot,cont,tourimg,dep)"\
-                    "values(%s,%s,%s,%s)"
+                sql = "INSERT INTO datas (spot,cont,tourimg,dep,yea,mont)"\
+                    "values(%s,%s,%s,%s,%s,%s)"
                 
-                cur.execute(sql,(title,content,tourimg,dep))
+                cur.execute(sql,(title,content,tourimg,dep,year,mont))
                 con.commit()
             
             browser.quit()
