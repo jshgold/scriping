@@ -1,5 +1,5 @@
 from selenium import webdriver
-
+import pymysql
 import time
 
 
@@ -12,6 +12,12 @@ import time
 #browser.find_elements_by_class_name("sp_flight.flight_btn_txt")[0].click()
 
 
-
-a= 08
-print(a)
+year=2010
+month=1
+place='강원도%'
+con = pymysql.connect(host="127.0.0.1" ,user="root" ,password="1234" ,db="site",charset="utf8")
+cur = con.cursor()
+sql = "SELECT * FROM datas WHERE yea=%s and mont=%s and dep LIKE %s"
+cur.execute(sql,(year,month,place))
+row = cur.fetchall()
+print(row)

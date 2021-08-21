@@ -3,7 +3,7 @@ from selenium import webdriver
 import requests
 import pymysql
 import time
-import re
+
 
 lst=[]
 con = pymysql.connect(host="127.0.0.1",user="root",password="1234",db="site",charset="utf8")
