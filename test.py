@@ -12,12 +12,42 @@ import time
 #browser.find_elements_by_class_name("sp_flight.flight_btn_txt")[0].click()
 
 
-year=2010
-month=1
-place='강원도%'
-con = pymysql.connect(host="127.0.0.1" ,user="root" ,password="1234" ,db="site",charset="utf8")
-cur = con.cursor()
-sql = "SELECT * FROM datas WHERE yea=%s and mont=%s and dep LIKE %s"
-cur.execute(sql,(year,month,place))
-row = cur.fetchall()
-print(row)
+#year=2010
+#month=1
+#place='강원도%'
+#con = pymysql.connect(host="127.0.0.1" ,user="root" ,password="1234" ,db="site",charset="utf8")
+#cur = con.cursor()
+#sql = "SELECT * FROM datas WHERE yea=%s and mont=%s and dep LIKE %s"
+#cur.execute(sql,(year,month,place))
+#row = cur.fetchall()
+#print(row)
+
+dic={}
+row=(('xlxlxl','a','b','c'),('dldldld','q','w','e'),)
+for i in row:
+    dic[i[0]]=[i[1],i[2],i[3]]
+    
+print(dic)
+
+for i in dic:
+    print(i)
+    for j in dic.get(i):
+        print(j)
+
+
+
+
+total=[[] for _ in range(5)]
+print(total)
+
+
+
+
+
+
+
+
+
+
+
+
