@@ -46,10 +46,11 @@ for year in range(2010,2022):
                 browser = webdriver.Chrome(options=options)
                 browser.get(url)
                 browser.find_elements_by_class_name("go")[count].click()
-                time.sleep(1)
+                time.sleep(0.5)
                 title=browser.find_element_by_class_name("view_title").text.strip()
                 if title in lst:
                     continue
+                
                 dep = browser.find_element_by_class_name("full").text.strip()
                 content = browser.find_element_by_class_name("view_con").text.strip()
                 if content.find("※") != -1:

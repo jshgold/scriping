@@ -22,25 +22,42 @@ import time
 #row = cur.fetchall()
 #print(row)
 
-dic={}
-row=(('xlxlxl','a','b','c'),('dldldld','q','w','e'),)
-for i in row:
-    dic[i[0]]=[i[1],i[2],i[3]]
+#dic={}
+#row=(('xlxlxl','a','b','c'),('dldldld','q','w','e'),)
+#for i in row:
+#    dic[i[0]]=[i[1],i[2],i[3]]
+#    
+#print(dic)
+#
+#for i in dic:
+#    print(i)
+#    for j in dic.get(i):
+#        print(j)
+#
+#
+#
+#
+#total=[[] for _ in range(5)]
+#print(total)
+
+
+
+place='pa'
+year=2345
+month=1
+total='Ok'
+
+if month != '' and place != '' and year != '':
+    print(total)
+    print(bool(place))
     
-print(dic)
 
-for i in dic:
-    print(i)
-    for j in dic.get(i):
-        print(j)
+import random
 
 
-
-
-total=[[] for _ in range(5)]
-print(total)
-
-
+row =list((('dd',),('aa'),('rrr'),('ggg')))
+shu=random.shuffle(row)
+print(shu)
 
 
 
